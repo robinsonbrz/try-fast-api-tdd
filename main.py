@@ -10,4 +10,4 @@ def root():
 
 @app.get("/hello")
 def hello():
-    return {"hello": f"world!"}
+    return {"hello": "world!"}

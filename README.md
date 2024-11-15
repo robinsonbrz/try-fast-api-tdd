@@ -33,3 +33,49 @@
 [functional-specificvations](resources/--dev-try-fastapi-development-2024-live-phase-1/_docs/specifications/functional_specifications.md)
 
 [db-structura-testing](resources/--dev-try-fastapi-development-2024-live-phase-1/_docs/testing/structural testing/db_strucutural_testing.md)
+
+
+uvicorn app.main:api
+
+- **Ruff**: A code formatter for Python that enforces PEP 8 style guide recommendations.
+
+https://12factor.net
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+debug_mode = os.getenv('DEBUG')
+print(f'Debug Mode: {debug_mode}')
+```
+
+```
+  dev-db:
+    image: postgres:16.1-alpine3.19
+    # restart: always
+    env_file:
+      - ./.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d  # this folder is binded internally
+            # postgres executes the files on this folder on initialization
+
+```
+
+
+
+Alembic
+
+Database Version Control
+
+alembic init migrations
+
+create app/db_connection.py
+
+personalize migrations/env.py # with connections info
+
+alembic revision --autogenerate -m "initial"
+
+alembic -n devdb revision --autogenerate -m "initial"
+
+alembic -n devdb upgrade head

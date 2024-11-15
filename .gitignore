@@ -162,4 +162,4 @@ cython_debug/
 **/migrations/
 
 celerybeat-schedule
-resources/
+00_resources/
